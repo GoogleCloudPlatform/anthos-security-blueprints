@@ -194,7 +194,7 @@ $ gcloud container clusters get-credentials <cluster 1 or cluster-2 cluster name
 
 
 
-1.  `$ kubectl config get-context`
+12.  `$ kubectl config get-context`
 
 Get ClusterRoleBinding with `kubectl \
 $ kubectl get clusterrolebinding auditors`
@@ -209,7 +209,7 @@ NAME         AGE
 
 
 
-1.  `auditors     5m`
+13.  `auditors     5m`
 
 Next, let's verify that the "auditors" `ClusterRoleBinding` does not  exist in the test  clusters with different location labels. 
 
@@ -225,7 +225,7 @@ $ gcloud container clusters get-credentials <tcluster-3 cluster name> --zone <cl
 
 
 
-1.  `$ kubectl config get-context`
+14.  `$ kubectl config get-context`
 
 Get ClusterRoleBinding with `kubectl \
 $ kubectl get clusterrolebinding auditors`

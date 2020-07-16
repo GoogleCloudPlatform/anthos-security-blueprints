@@ -149,19 +149,19 @@ Where the project name is my-project-name
 
 ## [Deployment](#Deployment) 
 
-### Fork and clone this repo 
+### Clone this repo 
 
 **Important :If you are implementing multiple blueprints you only need to clone the repo once**
 
 
+ In your terminal, clone this repo locally.
 
-1.  Fork this repo to your account
-1.  In your terminal, clone this repo locally.
-
-    '$ git clone https://github.com/<GITHUB\_USERNAME>/xyz.git
+  ```
+    $ git clone https://github.com/<GITHUB\_USERNAME>/xyz.git
 
 
-    $ cd xyz/docs/'
+    $ cd xyz/docs/
+```
 
 
 For production configurations ensure you have configured [a centralised repo ](https://cloud.google.com/anthos-config-management/docs/how-to/nomos-command#server-hooks)such as Cloud Source Repositories, GitHub, Gitlab  for use with Anthos Config manager.
@@ -232,21 +232,20 @@ Each cluster has its own config in the [setup/] directory.
 If you are using another git repo amend accordingly
 
 
-1.  Remove the template file mycluster-config-managment.yaml 
-1.   Sync the ACM Operator for your clusters by repeating the following steps for each cluster
+3.  Remove the template file mycluster-config-managment.yaml 
+4.   Sync the ACM Operator for your clusters by repeating the following steps for each cluster
 
-    ```
+  ```
     # Get kubeconfig credentials for your cluster
     $ gcloud container clusters get-credentials <cluster name> --zone <cluster zone>
     # Ensure kubectl is using correct context
     $ kubectl config get-context
     # Apply the configuration to your cluster
     $ kubectl apply -f setup/<cluster name>.config-management.yaml
-    ```
+```
 
 
-3.  Confirm the sync was successful with `nomos status`
+5.  Confirm the sync was successful with  `nomos status`
 
         For each cluster you should see the status set to SYNCED
 
--
