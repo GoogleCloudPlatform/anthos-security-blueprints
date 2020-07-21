@@ -81,14 +81,13 @@ Note: each blueprint in the series  assumes you have [Policy Controller](https:/
 ## [Prerequisites](#Prerequisites) 
 
 
-### [Prepare your admin workstation[(#Prepare your admin workstation)] 
+### Prepare your admin workstation
 
 You can use Cloud Shell, a local machine or VM as your admin workstation 
 
 
 #### 
 **Tools for Cloud Shell as your Admin workstation ** {#tools-for-cloud-shell-as-your-admin-workstation}
-
 
 
 *   [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk)
