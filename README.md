@@ -65,7 +65,7 @@ If you wish to start from an end to end example follow the steps outlined in the
 *   You have  the appropriate IAM permissions to configure project resources
 *   You have an Anthos entitlement
 *   You have created your [GKE On Google Cloud Clusters](https://github.com/terraform-google-modules/terraform-google-kubernetes-engine) and/or your [GKE on-premises clusters](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/install-overview-basic)  following the guidance in the  applicable hardening guides 
-    *   [Hardening GKE on Google Cloud](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/hardening-your-cluster)
+    *   [Hardening GKE on Google Cloud](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster)
     *   [Hardening GKE on-premises](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/hardening-your-cluster)
 
 Note: each blueprint in the series  assumes you have [Policy Controller](https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller) installed which is a recommendation in the hardening guides
