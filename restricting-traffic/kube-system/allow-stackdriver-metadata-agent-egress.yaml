@@ -1,0 +1,39 @@
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-stackdriver-metadata-agent-egress
+  namespace: kube-system
+  annotations:
+    #configmanagement.gke.io/cluster-selector: ${CLUSTER_SELECTOR}
+spec:
+  podSelector:  
+   matchLabels:
+      app: stackdriver-metadata-agent
+  policyTypes:
+  - Egress
+  egress: 
+  - to:
+    - ipBlock:
+        cidr: ${APISERVER_IP}/32
+    ports:
+    - protocol: TCP
+      port: 443
+  - to:
+    - ipBlock:
+        cidr: ${GOOGLEAPIS_CIDR} 
+    ports:
+    - protocol: TCP
+      port: 443
+  - to:
+    - ipBlock:
+        cidr: 169.254.169.254/32
+    ports:
+    - protocol: TCP
+      port: 80
+  - to:
+    - ipBlock:
+        cidr: 127.0.0.1/32
+    ports:
+    - protocol: TCP
+      port: 988
