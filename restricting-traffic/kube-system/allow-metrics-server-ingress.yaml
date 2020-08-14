@@ -16,7 +16,6 @@ spec:
   - from:
      - ipBlock:
         cidr: ${APISERVER_IP}/32
-     - ipBlock:
     ports:
     - protocol: TCP
       port: 443
