@@ -17,7 +17,6 @@ spec:
      - ipBlock:
         cidr: ${APISERVER_IP}/32
      - ipBlock:
-        cidr: ${NODE_CIDR}
     ports:
     - protocol: TCP
       port: 443
