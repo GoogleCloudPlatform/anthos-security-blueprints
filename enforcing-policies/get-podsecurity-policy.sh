@@ -23,7 +23,6 @@ wget -O fsgroup.yaml https://raw.githubusercontent.com/open-policy-agent/gatekee
 wget -O host-filesystem.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/host-filesystem/constraint.yaml
 wget -O host-namespaces.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/host-namespaces/constraint.yaml
 wget -O host-network-ports.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/host-network-ports/constraint.yaml
-wget -O privileged-containers.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/privileged-containers/constraint.yaml
 wget -O proc-mount.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/proc-mount/constraint.yaml
 wget -O read-only-root-filesystem.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/read-only-root-filesystem/constraint.yaml
 wget -O seccomp.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/seccomp/constraint.yaml
@@ -41,7 +40,6 @@ echo "enforcementAction: dryrun" >> fsgroup.yaml
 echo "enforcementAction: dryrun" >> host-filesystem.yaml
 echo "enforcementAction: dryrun" >> host-namespaces.yaml
 echo "enforcementAction: dryrun" >> host-network-ports.yaml
-echo "enforcementAction: dryrun" >> privileged-containers.yaml
 echo "enforcementAction: dryrun" >> proc-mount.yaml
 echo "enforcementAction: dryrun" >> read-only-root-filesystem.yaml
 echo "enforcementAction: dryrun" >> seccomp.yaml
