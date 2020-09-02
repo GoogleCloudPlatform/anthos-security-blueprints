@@ -16,7 +16,7 @@ For background information on the security controls used, see [Anthos security b
 ## Denying traffic unless it is explicitly allowed
 
 In Kubernetes, all traffic to and from any Pod is allowed unless there is an explicit network policy in the namespace and the policy selects (matches) the Pod. Network policies are additive. If any policies select a Pod, the Pod is restricted to what is allowed by the union of the ingress and egress rules in those policies.   
-A best practice for enterprises is to deny all traffic in a namespace by default. To follow this best practice, you need to have a network policy that selects all Pods within that namespace. Traffic is then allowed only when it is explicitly permitted by other network policies in that namespace. However, you need to allow DNS traffic to pass to the `kube-dns` Pods in the `kube-system` namespace or you will break DNS discovery within the cluster. You can inspect the policy before deploying it by looking at the `default-deny.yaml` file.  
+A best practice for enterprises is to deny all traffic in a namespace by default. To follow this best practice, you need to have a network policy that selects all Pods within that namespace. Traffic is then allowed only when it is explicitly permitted by other network policies in that namespace. However, you need to allow DNS traffic to pass to the `kube-dns` Pods in the `kube-system` namespace or you will break DNS discovery within the cluster. You can inspect the policy before deploying it by looking at the `default-deny/default-deny.yaml` file.  
 To implement a policy of denying all traffic except DNS traffic to `kube-dns`, carry out the following steps in your [structured Anthos config management repo](https://cloud.google.com/anthos-config-management/docs/concepts/repo). If you've already carried out some of the steps, such as defining your namespace hierarchy, you can skip those steps.
 
 1. Define the namespaces and labels that are required for the Pods of your applications.
@@ -32,7 +32,7 @@ To implement a policy of denying all traffic except DNS traffic to `kube-dns`, c
 
    Labeling the `kube-system` namespace is required so that the `kube-dns` Pod in the `kube-system` namespace is selected by a network policy.
 
-1. Copy the `default-deny.yaml` file from the directory that contains this README file to the appropriate namespaces or abstract namespaces in your Anthos Config Management repo.
+1. Copy the `default-deny.yaml` file from the `default-deny` subdirectory to the appropriate namespaces or abstract namespaces in your Anthos Config Management repo.
 
    **Important:** Don't apply the policy to all namespaces by copying the file to the `~/config-root/namespaces`. If you do,  you might block the necessary GKE and Anthos Config Management traffic in the `kube-system` and `config-management-system` namespaces.
 
@@ -57,21 +57,21 @@ Apply your [network policy](https://cloud.google.com/anthos-config-management/do
 
 If you want to make sure that your Kubernetes workloads will never be exposed to the internet—that is, they don't allow either ingress or egress—you can follow the approach described in this section that's a combination of the following:
 
--  A network policy that allows traffic only to the private IP address space as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918). You can inspect this network policy by looking at the `no-internet.yaml` file in the current repo. 
+-  A network policy that allows traffic only to the private IP address space as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918). You can inspect this network policy by looking at the `no-internet/no-internet.yaml` file in the current repo. 
 
    This policy allows traffic for all Pods to and from all cluster-internal targets as well as to and from all private IP addresses. However, because network policies are additive, after you apply the first network policy you cannot deny any of this traffic using other network policies. If you don't want to allow all cluster-internal traffic, start with the default-deny policy mentioned in the previous section.
 
--  A constraint that uses the `k8snoexternalservices` constraint template from the [Anthos Policy Controller constraint template library](https://cloud.google.com/anthos-config-management/docs/reference/constraint-template-library#etc). You can inspect the constraint by looking at the `no-internet-services.yaml` file in the current repo.
+-  A constraint that uses the `k8snoexternalservices` constraint template from the [Anthos Policy Controller constraint template library](https://cloud.google.com/anthos-config-management/docs/reference/constraint-template-library#etc). You can inspect the constraint by looking at the `no-internet/no-internet-services.yaml` file in the current repo.
 
 To implement this approach, carry out the following steps in your [structured Anthos config management repo](https://cloud.google.com/anthos-config-management/docs/concepts/repo). If you've already carried out some of the steps, such as defining your namespace hierarchy, you can skip those steps.
 
 1. Define the namespaces and labels that are required for the Pods of your applications.
 1. Prepare your namespace hierarchy under the `~/config-root/namespaces` directory. For more information, see [Configuring namespaces and namespace-scoped objects](https://cloud.google.com/anthos-config-management/docs/how-to/namespace-scoped-objects).
-1. Copy the `no-internet.yaml` policy file from the directory that contains the current README file to the appropriate namespaces or abstract namespaces in your Anthos Config Management repo. This policy allows all traffic within private address ranges. Modify the policy if you're using non-RFC 1918 ranges for private addresses. 
+1. Copy the `no-internet.yaml` policy file from the `no-internet` subdirectory to the appropriate namespaces or abstract namespaces in your Anthos Config Management repo. This policy allows all traffic within private address ranges. Modify the policy if you're using non-RFC 1918 ranges for private addresses. 
 
    **Important:** Don't apply the policy to all namespaces by copying the file to the `~/config-root/namespaces`. If you do, you might block the necessary GKE and Anthos Config Management traffic in the `kube-system` and `config-management-system` namespaces.
 
-1. Copy the `no-internet-services.yaml` constraint to the `cluster/` directory in your Anthos Config Management repo. If you're using non-RFC 1918 ranges for private addresses, modify the constraint.
+1. Copy the `no-internet/no-internet-services.yaml` constraint to the `cluster/` directory in your Anthos Config Management repo. If you're using non-RFC 1918 ranges for private addresses, modify the constraint.
 1. If you want to use the policy only in a subset of your clusters use [cluster labels and cluster selectors](https://cloud.google.com/anthos-config-management/docs/how-to/clusterselectors) and modify the configuration accordingly.
 
 Apply your [network policy](https://cloud.google.com/anthos-config-management/docs/how-to/configs#network-policy-config) and constraint using Anthos Config Management:
