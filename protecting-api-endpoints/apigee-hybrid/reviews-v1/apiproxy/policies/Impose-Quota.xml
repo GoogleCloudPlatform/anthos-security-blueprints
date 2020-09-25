@@ -1,0 +1,11 @@
+<Quota async="false" continueOnError="false" enabled="true" name="Impose-Quota">
+    <Interval>1</Interval>
+    <TimeUnit>hour</TimeUnit>
+    <Allow count="1000" countRef="todo.apiproduct.quota"/>
+    <Distributed>true</Distributed>
+    <Synchronous>false</Synchronous>
+    <AsynchronousConfiguration>
+        <SyncIntervalInSeconds>10</SyncIntervalInSeconds>
+        <SyncMessageCount>5</SyncMessageCount>
+    </AsynchronousConfiguration>
+</Quota>

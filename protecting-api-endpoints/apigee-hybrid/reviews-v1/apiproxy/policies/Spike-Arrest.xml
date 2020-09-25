@@ -1,0 +1,4 @@
+<SpikeArrest async="false" continueOnError="false" enabled="true" name="Spike-Arrest">
+    <Identifier ref="apiproxy.name"/>
+    <Rate>10pm</Rate>
+</SpikeArrest>
