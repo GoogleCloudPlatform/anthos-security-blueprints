@@ -89,7 +89,7 @@ You can use Cloud Shell, a local machine or VM as your admin workstation
 
 
 #### 
-**Tools for Cloud Shell as your Admin workstation ** {#tools-for-cloud-shell-as-your-admin-workstation}
+[**Tools for Cloud Shell as your Admin workstation**](#tools-for-cloud-shell-as-your-admin-workstation)
 
 
 *   [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk)
@@ -97,7 +97,7 @@ You can use Cloud Shell, a local machine or VM as your admin workstation
 *   [Terraform >= 0.12.3](https://www.terraform.io/downloads.html)
 
 #### 
-**Tools for  a  local workstation as your Admin workstation ** {#tools-for-a-local-workstation-as-your-admin-workstation}
+[**Tools for a local workstation as your Admin workstation**](#tools-for-a-local-workstation-as-your-admin-workstation)
 
 *    [Cloud SDK (gcloud CLI)](https://cloud.google.com/sdk/docs/quickstarts)
 *    [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk)
@@ -109,7 +109,7 @@ You can use Cloud Shell, a local machine or VM as your admin workstation
 
 
 ##### 
-Install Cloud SDK {#install-cloud-sdk}
+[Install Cloud SDK](#install-cloud-sdk)
 
 
 This is pre installed if you are using Cloud Shell
@@ -118,21 +118,21 @@ The Google Cloud SDK is used to interact with your GCP resources. [Installation 
 
 
 ##### 
-Install kubectl CLI {#install-kubectl-cli}
+[Install kubectl CLI](#install-kubectl-cli)
 
 The kubectl CLI is used to interteract with both Kubernetes Engine and kubernetes in general. [Installation instructions](https://cloud.google.com/kubernetes-engine/docs/quickstart) for multiple platforms are available online.
 
 
 ##### 
-Install the nomos CLI {#install-the-nomos-cli}
+[Install the nomos CLI](#install-the-nomos-cli)
 
 Install the [nomos CLI](https://cloud.google.com/anthos-config-management/downloads) for managing ACM across clusters
 
-
 ##### 
-Install Terraform {#install-terraform}
+[Install Terraform](https://www.terraform.io/intro/getting-started/install.html)
 
-Terraform is used to automate the manipulation of cloud infrastructure. Its [installation instructions](https://www.terraform.io/intro/getting-started/install.html) are also available online
+Terraform is used to automate the manipulation of cloud infrastructure. Its [installation instructions](https://www.terraform.io/intro/getting-started/install.html) are also available online.
+When configuring terraform for use with Google cloud create a service account as detailed in [Getting started with the google provider](https://www.terraform.io/docs/providers/google/guides/getting_started.html#adding-credentials)
 
 
 #### **Authentication** 
