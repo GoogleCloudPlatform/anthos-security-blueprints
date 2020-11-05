@@ -12,6 +12,8 @@ The instructions and accompanying assets in this repo are for the following Goog
 *   [Enforcing locality restrictions for clusters on Google Cloud](https://cloud.google.com/architecture/blueprints/anthos-enforcing-locality-restrictions-blueprint) 
 *   [Restricting traffic](https://cloud.google.com/architecture/blueprints/anthos-restricting-traffic-blueprint)
 *   [Protecting API endpoints](https://cloud.google.com/architecture/blueprints/anthos-protecting-api-endpoints-blueprint)
+*   [Managing secrets](https://cloud.google.com/architecture/blueprints/anthos-managing-secrets-blueprint)
+*   [Auditing and monitoring for deviation from policy](https://cloud.google.com/architecture/blueprints/anthos-auditing-and-monitoring-for-deviation-from-policy-blueprint/)
 
 The blueprints can be used in any combination.
 Note: If you need to constraint what regions your clusters can be deployed to the steps detailed in the Enforcing locality restrictions blueprint should be followed first before using any other Anthos security blueprint.
