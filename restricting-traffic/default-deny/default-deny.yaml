@@ -14,8 +14,10 @@ spec:
           matchLabels:
             k8s-namespace: kube-system
         podSelector:
-          matchLabels:
-            k8s-app: kube-dns
+          matchExpressions:
+          - key: k8s-app
+            operator: In
+            values: ["kube-dns","node-local-dns"]
       ports:
       - protocol: TCP
         port: 53
