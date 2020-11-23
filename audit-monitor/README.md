@@ -2,7 +2,7 @@
 
 
 
-# Anthos Security blueprint README: Auditing and monitoring for deviation from policy - Implementation steps
+# Anthos Security blueprint Auditing and monitoring for deviation from policy - Implementation steps
 
 
 These instructions provide a prescriptive way to implement the infrastructure to audit and monitor deviation from policies that you've configured in your Anthos GKE clusters. For background information about what you will configure, see [Anthos security blueprint: Auditing and monitoring for deviation from policy](https://cloud.google.com/architecture/blueprints/anthos-auditing-and-monitoring-for-deviation-from-policy-blueprint).
