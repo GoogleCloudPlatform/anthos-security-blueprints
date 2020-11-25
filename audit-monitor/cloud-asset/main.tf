@@ -14,56 +14,61 @@
  * limitations under the License.
  */
 
-
-locals {
-  role_id   = "projects/${var.project_id}/roles/${local.role_name}"
-  role_name = "feeds_cf"
+provider "google" {
+  project = "grapesfrog-project"
+  credentials = file("gp.json")
+  region  = "us-central1"
+  zone    = "us-central1-c"
+  version = "~> 3.41"
 }
 
-module "project" {
-  source         = "../../modules/project"
-  name           = var.project_id
-  project_create = var.project_create
   services = [
-    "cloudasset.googleapis.com",
-    "cloudresourcemanager.googleapis.com"
+# Create a feed that sends notifications about GKE updates.
+resource "google_cloud_asset_organization_feed" "organization_feed" {
+  billing_project  = var.project_id
+  org_id           = var.org_id
+  feed_id          = var.name
+  content_type     = "RESOURCE"
+
+  asset_types = [
+    "k8s.io/Namespace,container",
+    "container.googleapis.com/Cluster",
   ]
-  service_config = {
-    disable_on_destroy         = false,
-    disable_dependent_services = false
+
+  feed_output_config {
+    pubsub_destination {
+      topic = google_pubsub_topic.feed_output.id
+    }
   }
-  custom_roles = {
-    (local.role_name) = [
-      "container.clusters.list",
-      "container.clusterRoles.list",
-      "resourcemanager.projects.list"
-    ]
-  }
-  iam_roles = [local.role_id]
-  iam_members = {
-    (local.role_id) = [module.service-account.iam_email]
-  }
+
+
+
+  # Wait for the permission to be ready on the destination topic.
+  depends_on = [
+    google_pubsub_topic_iam_member.cloud_asset_writer,
+  ]
 }
 
-module "pubsub" {
-  source        = "../../modules/pubsub"
-  project_id    = module.project.project_id
-  name          = var.name
-  subscriptions = { "${var.name}-default" = null }
-  iam_roles = [
-    "roles/pubsub.publisher"
-  ]
-  iam_members = {
-    "roles/pubsub.publisher" = [
-      "serviceAccount:${module.project.service_accounts.robots.cloudasset}"
-    ]
-  }
+# The topic where the resource change notifications will be sent.
+resource "google_pubsub_topic" "feed_output" {
+  project  = var.project_id
+  name     = "gke-updates"
 }
 
-module "service-account" {
-  source     = "../../modules/iam-service-accounts"
-  project_id = module.project.project_id
-  names      = ["${var.name}-cfg"]
- # iam_project_roles = { (module.project.project_id) = [local.role_id] }
+# Find the project number of the project whose identity will be used for sending
+# the asset change notifications.
+data "google_project" "project" {
+  project_id = var.project_id
 }
+
+# Allow the publishing role to the Cloud Asset service account of the project that
+# was used for sending the notifications.
+resource "google_pubsub_topic_iam_member" "cloud_asset_writer" {
+  project = var.project_id
+  topic   = google_pubsub_topic.feed_output.id
+  role    = "roles/pubsub.publisher"
+  member  = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudasset.iam.gserviceaccount.com"
+}
+
+
 

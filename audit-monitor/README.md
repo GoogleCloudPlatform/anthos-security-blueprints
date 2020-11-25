@@ -91,6 +91,8 @@ If you  created your Google Cloud organization using the [Example foundation](ht
 
 This procedure is applicable only for Anthos GKE clusters that are deployed on Google Cloud.  The procedure assumes that you have not activated [Cloud Asset Inventory](https://cloud.google.com/asset-inventory) against your Google Cloud organization. If you have done this process and have already configured a feed, you can skip this step. 
 
+The template file uses the [google_cloud_asset_organization_feed resource](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_asset_organization_feed) 
+
 **Note**: The account you are using must have permissions to create a Cloud Asset Inventory  feed at the Google Cloud organization level. 
 
 
@@ -121,40 +123,9 @@ This procedure is applicable only for Anthos GKE clusters that are deployed on G
 
 *   A Pub/Sub topic destination and an associated subscriber
 *   A service account that Cloud Asset Inventory uses to write entries to the destination.
-*   The `gcloud` command needed to create the Cloud Asset Inventory feed. 
+*   A Cloud Asset Inventory feed at your organization level. 
 
-    ```
-    Note: Because there is not currently support for creating a Cloud Asset Inventory feed using Terraform, when you run the Terraform script, 
-    you see an error similar to the following:
-
-    Error: Error applying IAM policy for pubsub topic "projects/your-project/topics/asset-feed": Error setting IAM policy for pubsub topic 
-    "projects/your-projectst/topics/asset-feed": googleapi: Error 400: 
-    Service account service-xxxxxxxx@gcp-sa-cloudasset.iam.gserviceaccount.com does not exist.
-    
-    ```
-
-
-4. [Create a feed](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#creating_a_feed) at the organization level to monitor any GKE cluster. 
-
-    ```
-    terraform output
-    ```
-
-    The `gcloud` command that you generated assumes you are creating [a feed](https://cloud.google.com/sdk/gcloud/reference/asset/feeds/create) for assets in your Google Cloud organization. 
-
-5. Copy the `gcloud` command that's created in the `output` command and run it. If you want notifications of changes for any additional [supported GKE assets](https://cloud.google.com/asset-inventory/docs/supported-asset-types), add the names of the assets as a comma-separated list to the `asset-types` flag.
-
-    The `gcloud` command looks similar to the following:
-
-
-    ```
-    gcloud asset feeds create asset-feed \
-        --pubsub-topic YOUR-TOPIC \
-        --asset-types k8s.io/Namespace,container.googleapis.com/Cluster \
-        --content-type resource \
-        --organization YOUR-ORGANIZATION-ID
-
-    ```
+   
 
 
 

@@ -19,21 +19,13 @@ output "feed_create" {
   description = "Feed gcloud command."
   value       = <<END
 gcloud asset feeds create ${var.name} \
-  --pubsub-topic ${module.pubsub.topic.id} \
+  --pubsub-topic ${google_pubsub_topic.feed_output.id} \
   --asset-types k8s.io/Namespace,container.googleapis.com/Cluster \
   --content-type resource \
   --organization ${var.org_id}
   END
 }
 
-output "subscription_pull" {
-  description = "Subscription pull command."
-  value       = <<END
-gcloud pubsub subscriptions pull ${var.name}-default \
-  --auto-ack \
-  --format "value(message.data)" \
-  --project ${module.project.project_id}
-  END
-}
+
 
 
