@@ -22,7 +22,6 @@ provider "google" {
   version = "~> 3.41"
 }
 
-  services = [
 # Create a feed that sends notifications about GKE updates.
 resource "google_cloud_asset_organization_feed" "organization_feed" {
   billing_project  = var.project_id
