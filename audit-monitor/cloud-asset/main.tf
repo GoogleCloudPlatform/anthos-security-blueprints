@@ -14,13 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  project = "grapesfrog-project"
-  credentials = file("gp.json")
-  region  = "us-central1"
-  zone    = "us-central1-c"
-  version = "~> 3.41"
-}
 
 # Create a feed that sends notifications about GKE updates.
 resource "google_cloud_asset_organization_feed" "organization_feed" {
