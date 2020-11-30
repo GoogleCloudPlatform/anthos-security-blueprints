@@ -52,7 +52,7 @@ Applying policies using Policy Controller needs careful planning so ensure you u
 
 In the local clone of the repo carry out the following:
 
-Use the [constraint template library](https://github.com/open-policy-agent/gatekeeper/tree/master/library/general) to enforce labels
+Use the [constraint template library](https://github.com/open-policy-agent/gatekeeper-library/tree/master/library/general) to enforce labels
 
 9. Make a copy of the file ~/anthos-blueprints/enforcing-policies/enforce-label.yaml
 1. Edit the copy to reflect your requirements and copy it into the appropriate place under the config-root/namespaces folder hierarchy
@@ -104,7 +104,7 @@ Expected output:
 
 In the local clone of the repo carry out the following:
 
-Use the [ constraint template library](https://github.com/open-policy-agent/gatekeeper/tree/master/library/pod-security-policy) to enforce Pod security policies
+Use the [ constraint template library](https://github.com/open-policy-agent/gatekeeper-library/tree/master/library/pod-security-policy) to enforce Pod security policies
 
 For maintainability applying each constraint individually is required.
 
@@ -142,7 +142,7 @@ The nomos status command monitors your enrolled clusters When you see the sync s
 
    When you are satisfied that the implementation of the PodSecurity  policies will not inadvertently impact the availability of your application set the policy files to enforcement mode  by changing the value for enforcementAction from  'dryrun' to 'deny' in each of the policy files. Then apply the updated policies.
 
-Note:  You can test each of the PodSecurity policies by using the example.yaml file in each policy constraint folder in the [ constraint template library](https://github.com/open-policy-agent/gatekeeper/tree/master/library/pod-security-policy) 
+Note:  You can test each of the PodSecurity policies by using the example.yaml file in each policy constraint folder in the [ constraint template library](https://github.com/open-policy-agent/gatekeeper-library/tree/master/library/pod-security-policy) 
 
 20. Copy the example.yaml file  or its contents to your local workstation , use kubectl to try and apply it.
 
