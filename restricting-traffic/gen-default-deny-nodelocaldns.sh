@@ -51,7 +51,7 @@ mkdir -p output
 # cluster and clusterselector definitions and link them
 if [ "$MULTICLUSTER" = true ]
 then
-  envsubst < default-deny/default-deny-nodelocaldns.yaml | sed -e 's/#configmanagement/configmanagement/' > output/default-deny-nodelocaldns-$CLUSTER_NAME.yaml
+  envsubst < default-deny-nodelocaldns/default-deny-nodelocaldns.yaml | sed -e 's/#configmanagement/configmanagement/' > output/default-deny-nodelocaldns-$CLUSTER_NAME.yaml
   mkdir -p output/clusterregistry
   cd kube-system/clusterregistry
   for f in *.yaml
@@ -61,7 +61,7 @@ then
   cd ../..
 # for single cluster, just create single file replacing variables
 else
-  envsubst < default-deny/default-deny-nodelocaldns.yaml > output/default-deny-nodelocaldns.yaml
+  envsubst < default-deny-nodelocaldns/default-deny-nodelocaldns.yaml > output/default-deny-nodelocaldns.yaml
 fi
 
 
