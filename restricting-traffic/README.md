@@ -15,6 +15,22 @@ For background information on the security controls used, see [Anthos security b
 
 ## Denying traffic unless it is explicitly allowed
 
+These instructions are for GKE clusters using Dataplane V2 or clusters not using NodeLocal DNScache. If you have GKE clusters using NodeLocal DNScache but not using Dataplane V2 (including GKE on prem) follow the instructions in README-nodelocaldns.md instead. For mixed environments follow both sets of instructions. 
+
+Clusters that use NodeLocal DNScache but not Dataplane V2 can be identified by running the following command:
+
+```
+gcloud container clusters describe CLUSTER_NAME --format="table(addonsConfig.dnsCacheConfig.enabled:label='NodeLocalDNS',networkPolicy.provider:label='NetworkPolicy provider')"
+```
+
+In a cluster with NodeLocalDNS and without Dataplane V2 you will see the following output:
+
+```
+NodeLocalDNS  NetworkPolicy provider
+True          CALICO
+```
+
+
 In Kubernetes, all traffic to and from any Pod is allowed unless there is an explicit network policy in the namespace and the policy selects (matches) the Pod. Network policies are additive. If any policies select a Pod, the Pod is restricted to what is allowed by the union of the ingress and egress rules in those policies.   
 A best practice for enterprises is to deny all traffic in a namespace by default. To follow this best practice, you need to have a network policy that selects all Pods within that namespace. Traffic is then allowed only when it is explicitly permitted by other network policies in that namespace. However, you need to allow DNS traffic to pass to the `kube-dns` Pods in the `kube-system` namespace or you will break DNS discovery within the cluster. You can inspect the policy before deploying it by looking at the `default-deny/default-deny.yaml` file.  
 To implement a policy of denying all traffic except DNS traffic to `kube-dns`, carry out the following steps in your [structured Anthos config management repo](https://cloud.google.com/anthos-config-management/docs/concepts/repo). If you've already carried out some of the steps, such as defining your namespace hierarchy, you can skip those steps.
@@ -121,7 +137,7 @@ Now copy the policies to your Anthos Config Management repo:
 
 1. If there is no namespace config for kube-system, create a `~/config-root/namespaces/kube-system` directory and add the namespace definition by copying `kube-system.yaml` from the current repo to the current directory.
 1. Copy all files in the `output/` directory to the  `~/config-root/namespaces/kube-system` directory.
-1. If you haven't yet created `[Cluster` and `ClusterSelector` definitions](https://cloud.google.com/anthos-config-management/docs/how-to/clusterselectors) for your cluster, copy all files in the `output/clusterregistry/` directory to the `~/config-root/clusterregistry` directory.
+1. If you haven't yet created [`Cluster` and `ClusterSelector` definitions](https://cloud.google.com/anthos-config-management/docs/how-to/clusterselectors) for your cluster, copy all files in the `output/clusterregistry/` directory to the `~/config-root/clusterregistry` directory.
 
 Apply your [network policy](https://cloud.google.com/anthos-config-management/docs/how-to/configs#network-policy-config) and constraints by using Anthos Config Management.
 1. Create a commit that includes the files you have just created and then push the commit to the remote repository:
