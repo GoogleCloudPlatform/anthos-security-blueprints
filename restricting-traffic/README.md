@@ -2,7 +2,7 @@
 
 This repository directory provides deployable assets and implementation steps for typical approaches that are used in enterprises to restrict traffic within Kubernetes clusters using sample network policies. These instructions provide prescriptive guidance for restricting traffic on the Anthos Platform and GKE.
 
-You should already have some knowledge of Kubernetes [network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/). We assume that you have an Anthos or GKE cluster with network policies enabled and a [structured Anthos Config Management repository](https://cloud.google.com/anthos-config-management/docs/concepts/repo). To prepare your workstation, follow the instructions in the README file in the root directory of the current repository.  
+You should already have some knowledge of Kubernetes [network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/). We assume that you have an Anthos or GKE cluster with network policies enabled and a [structured Anthos Config Management repository](https://cloud.google.com/anthos-config-management/docs/concepts/repo). If you use privately used public IP addresses (PUPI), makesure you [configure SNAT correctly](https://cloud.google.com/kubernetes-engine/docs/how-to/alias-ips#enable_pupis) for Network Policy to work. To prepare your workstation, follow the instructions in the README file in the root directory of the current repository.  
 These instructions provide implementation steps for the following typical approaches to restrict traffic:
 
 -  Denying traffic unless it is explicitly allowed.
@@ -11,6 +11,7 @@ These instructions provide implementation steps for the following typical approa
 
 Other typical approaches will be added to the current repository over time. To add your own approaches, see [how to contribute](https://github.com/GoogleCloudPlatform/anthos-security-blueprints/blob/master/docs/contributing.md).  
 For background information on the security controls used, see [Anthos security blueprint: Restricting traffic](https://cloud.google.com/architecture/blueprints/anthos-restricting-traffic-blueprint).  
+
 **Note:** When you're using Anthos on Google Cloud, you can also use [VPC firewall rules](https://cloud.google.com/vpc/docs/firewalls), [hierarchical firewall policies](https://cloud.google.com/vpc/docs/firewall-policies), and [organization policy constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints) to restrict traffic and load-balancer creation for whole clusters or for individual teams. The implementation steps detailed do not include how to configure these features. For information about common approaches for deploying VPC firewall rules, see [Best practices and reference architectures for VPC design](https://cloud.google.com/solutions/best-practices-vpc-design).
 
 ## Denying traffic unless it is explicitly allowed
