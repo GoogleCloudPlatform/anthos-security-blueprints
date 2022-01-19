@@ -58,7 +58,7 @@ If you created your cluster with authorized networks  then you can skip these st
         --master-authorized-networks cidr,cidr
 
     ```
-    A Terraform example to create a [private cluster ](https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/blob/master/examples/private_zonal_with_networking/main.tf#L70-L75) is avaialable
+    A Terraform example to create a [private cluster ](https://github.com/terraform-google-modules/terraform-google-kubernetes-engine/blob/master/examples/private_zonal_with_networking/main.tf#L70-L75) is available
 
 
 ## Restricting who can access your clusters
