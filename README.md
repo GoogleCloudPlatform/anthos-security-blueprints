@@ -95,14 +95,14 @@ You can use Cloud Shell, a local machine or VM as your admin workstation
 
 
 *   [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk)
-*    [nomos CLI](https://cloud.google.com/anthos-config-management/downloads) for managing ACM across clusters
+*   [nomos CLI](https://cloud.google.com/anthos-config-management/downloads) for managing ACM across clusters
 *   [Terraform >= 0.12.3](https://www.terraform.io/downloads.html)
 
 #### 
 [**Tools for a local workstation as your Admin workstation**](#tools-for-a-local-workstation-as-your-admin-workstation)
 
-*    [Cloud SDK (gcloud CLI)](https://cloud.google.com/sdk/docs/quickstarts)
-*    [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk)
+*   [Cloud SDK (gcloud CLI)](https://cloud.google.com/sdk/docs/quickstarts)
+*   [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#download-as-part-of-the-google-cloud-sdk)
 *   [nomos CLI](https://cloud.google.com/anthos-config-management/downloads) for managing ACM across clusters
 *   [Terraform >= 0.12.3](https://www.terraform.io/downloads.html)
 
@@ -122,7 +122,7 @@ The Google Cloud SDK is used to interact with your GCP resources. [Installation 
 ##### 
 [Install kubectl CLI](#install-kubectl-cli)
 
-The kubectl CLI is used to interteract with both Kubernetes Engine and kubernetes in general. [Installation instructions](https://cloud.google.com/kubernetes-engine/docs/quickstart) for multiple platforms are available online.
+The kubectl CLI is used to interact with both Kubernetes Engine and kubernetes in general. [Installation instructions](https://cloud.google.com/kubernetes-engine/docs/quickstart) for multiple platforms are available online.
 
 
 ##### 
@@ -222,7 +222,7 @@ Each cluster has its own config in the [setup/] directory.
 
 
 
-1.  Create a copy of  the template YAML file named mycluster-config-managment.yaml  in the setup/ folder of your cloned repo for each of the clusters you wish to apply any  blueprints from this repo to  naming the copy to reflect the name of your cluster
+1.  Create a copy of  the template YAML file named mycluster-config-management.yaml  in the setup/ folder of your cloned repo for each of the clusters you wish to apply any  blueprints from this repo to  naming the copy to reflect the name of your cluster
 1.  Update  each of the copied files in [setup/](https://github.com/GoogleCloudPlatform/csp-config-management/blob/1.0.0/locality-specific-policy/setup) to include your cluster names replacing 'mycluster' with your cluster name  and  the syncRepo git username with yours. For example, if your github username is <code>[user@example.com](mailto:user@example.com)</code>  change each YAML file to include 
 
  ```
@@ -235,7 +235,7 @@ Each cluster has its own config in the [setup/] directory.
 If you are using another git repo amend accordingly
 
 
-3.  Remove the template file mycluster-config-managment.yaml 
+3.  Remove the template file mycluster-config-management.yaml 
 4.   Sync the ACM Operator for your clusters by repeating the following steps for each cluster
 
   ```

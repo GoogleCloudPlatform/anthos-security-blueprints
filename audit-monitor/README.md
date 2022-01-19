@@ -58,11 +58,11 @@ If you  created your Google Cloud organization using the [Example foundation](ht
 
 *   `roles/serviceusage.serviceUsageAdmin`
 *   `roles/pubsub.admin`
-*   `roles/serviceAcoountCreator`
+*   `roles/serviceAccountCreator`
 *   `roles/serviceAccountDeleter`
 *   `roles/logging.Admin`
 2. In the local clone of the repository, change to the `~/audit-monitor/logsink` folder.
-3. Update the `terrform.tfvars` file with the following values:
+3. Update the `terraform.tfvars` file with the following values:
 *   `project_id`: The ID of the Google project in which the log export destination will be created.
 *   `parent_resource_id`: The ID of the resource in which the log sink will be created. 
 *   `parent_resource_type`: The resource type in which the log sink will be created. This can be a project, a folder, or the organization.
@@ -99,11 +99,11 @@ The template file uses the [google_cloud_asset_organization_feed resource](https
 
 1. In the project where you will create the Pub/Sub topic destination, grant the following permissions to the service account that you will use to create Terraform managed resources in the project:
 *   `roles/pubsub.admin`
-*   `roles/serviceAcoountCreator`
+*   `roles/serviceAccountCreator`
 *   `roles/serviceAccountDeleter`
-*   `roles/iam.roledmin`
+*   `roles/iam.roleadmin`
 1. In the local clone of the repository, change to the `~/audit-monitor/cloud-asset` folder.
-2. Update the `terrform.tfvars` file with the following values:
+2. Update the `terraform.tfvars` file with the following values:
 *   `org_id`: The ID of the Google Cloud organization for the cloud asset inventory feed.
 *   `project_id`: The ID of the Google project in which the Pub/Sub topic for the feed outputs will be created.
 3. Create a Pub/Sub topic as the destination that Cloud Asset Inventory sends notifications to:
@@ -149,7 +149,7 @@ Note: If you want to monitor for constraints that are out of compliance with sup
 
 *   `roles/pubsub.admin`
 3. In the local clone of the repository,  change to the `~/audit-monitor/scc_notification` folder.
-4. Update the `terrform.tfvars` file with the following values:
+4. Update the `terraform.tfvars` file with the following values:
 *   `org_id`: The ID of the Google Cloud organization for the Cloud Asset Inventory feed.
 *   `project_id`: The ID of the Google project in which the Pub/Sub topic for the feed outputs will be created.
 5. Create a Pub/Sub topic as the destination that receives findings:
@@ -214,7 +214,7 @@ To see information about deviation from policy, do the following:
 
 
 *   Query [sensitive admin activities](https://cloud.google.com/kubernetes-engine/docs/how-to/audit-logging#example_filters_for_your_admin_activity_log) and [Anthos service mesh audited operations](https://cloud.google.com/service-mesh/docs/audit-logging#audited_operations) for each of the projects where your Kubernetes clusters are deployed on Google Cloud by[ filtering the Admin Activity log](https://cloud.google.com/kubernetes-engine/docs/how-to/audit-logging#example_filters_for_your_admin_activity_log).
-*   Query Kuberntetes logs that record activities such as events written to the control plane logs by using [the example queries](https://cloud.google.com/logging/docs/view/query-library-preview#kubernetes-filters).
+*   Query Kubernetes logs that record activities such as events written to the control plane logs by using [the example queries](https://cloud.google.com/logging/docs/view/query-library-preview#kubernetes-filters).
 
 
 ### Configuring alerts for Cloud Logging events

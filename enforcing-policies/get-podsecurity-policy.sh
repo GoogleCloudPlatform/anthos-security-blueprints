@@ -14,21 +14,21 @@
 # limitations under the License.
 
 # Copy to local workstation the PodSecurity constraint files from the OPA/gatekeeper library
-wget -O privileged-containers.yaml  https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/privileged-containers/constraint.yaml
-wget -O apparmor.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/apparmor/constraint.yaml
-wget -O capabilities.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/capabilities/constraint.yaml
-wget -O flexvolume-drivers.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/flexvolume-drivers/constraint.yaml
-wget -O forbidden-sysctls.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/forbidden-sysctls/constraint.yaml
-wget -O fsgroup.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/fsgroup/constraint.yaml
-wget -O host-filesystem.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/host-filesystem/constraint.yaml
-wget -O host-namespaces.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/host-namespaces/constraint.yaml
-wget -O host-network-ports.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/host-network-ports/constraint.yaml
-wget -O proc-mount.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/proc-mount/constraint.yaml
-wget -O read-only-root-filesystem.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/read-only-root-filesystem/constraint.yaml
-wget -O seccomp.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/seccomp/constraint.yaml
-wget -O selinux.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/selinux/constraint.yaml
-wget -O users.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/users/constraint.yaml
-wget -O volumes.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/library/pod-security-policy/volumes/constraint.yaml
+wget -O privileged-containers.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/privileged-containers/samples/psp-privileged-container/constraint.yaml
+wget -O apparmor.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/apparmor/samples/psp-apparmor/constraint.yaml
+wget -O capabilities.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/samples/capabilities-demo/constraint.yaml
+wget -O flexvolume-drivers.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/flexvolume-drivers/samples/psp-flexvolume-drivers/constraint.yaml
+wget -O forbidden-sysctls.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/forbidden-sysctls/samples/psp-forbidden-sysctls/constraint.yaml
+wget -O fsgroup.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/fsgroup/samples/psp-fsgroup/constraint.yaml
+wget -O host-filesystem.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/host-filesystem/samples/psp-host-filesystem/constraint.yaml
+wget -O host-namespaces.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/host-namespaces/samples/psp-host-namespace/constraint.yaml
+wget -O host-network-ports.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/host-network-ports/samples/psp-host-network-ports/constraint.yaml
+wget -O proc-mount.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/proc-mount/samples/psp-proc-mount/constraint.yaml
+wget -O read-only-root-filesystem.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/read-only-root-filesystem/samples/psp-readonlyrootfilesystem/constraint.yaml
+wget -O seccomp.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/seccomp/samples/psp-seccomp/constraint.yaml
+wget -O selinux.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/selinux/samples/psp-selinux-v2/constraint.yaml
+wget -O users.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/users/samples/psp-pods-allowed-user-ranges/constraint.yaml
+wget -O volumes.yaml https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/volumes/samples/psp-volume-types/constraint.yaml
 
 # Add enforcementAction: dryrun to the end of each policy file. To enforce the policy: change enforcementAction from dryrun to deny
 echo "enforcementAction: dryrun" >> privileged-containers.yaml
