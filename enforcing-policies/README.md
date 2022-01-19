@@ -161,16 +161,16 @@ You can apply additional controls that focus at the application layer (L7) to fu
   
    For Anthos GKE on Google cloud follow the guidance detailed in [Anthos GKE on Google cloud: installing Anthos service mesh in strict mTLS mode](https://cloud.google.com/service-mesh/docs/gke-install-existing-cluster#strict-mtls)
 
-Apply a constraint policy to ensure that[ mTLS is on](https://github.com/GoogleCloudPlatform/acm-policy-controller-library/tree/master/anthos-service-mesh/peer-authentication).
+Apply a constraint policy to ensure that  **mTLS** is on
 
-22.    Copy the contents from [peer authentication template](https://github.com/GoogleCloudPlatform/acm-policy-controller-library/blob/master/anthos-service-mesh/peer-authentication/template.yaml) to a local file named mtls-on-template.yaml  in the top level of your local repo this is the constraint template
-2.  [Install the constraint template](https://cloud.google.com/anthos-config-management/docs/how-to/write-a-constraint-template#installing_your_constraint_template) you have created 
+22.    Copy the enforce-mtls.yaml into the top level of your local repo this is the constraint template
+2.  [Install the constraint template](https://cloud.google.com/anthos-config-management/docs/how-to/write-a-constraint-template#installing_your_constraint_template) 
 
-`kubectl apply -f mtls-on-template.yaml`
+`kubectl apply -f enforce-mtls.yaml`
 
   Create a constraint to enforce mTLS on your cluster using the constraint template you have created
 
-24.   Copy the contents from [peer authentication constraint ](https://github.com/GoogleCloudPlatform/acm-policy-controller-library/blob/master/anthos-service-mesh/peer-authentication/constraint.yaml)to a file named mtls-on.yaml  , move it to  config-root/cluster 
+24.   Move the enforce-mtls.yaml file to  config-root/cluster 
     
 25. Validate that the policy  constraint file is valid by using nomos vet 
 
