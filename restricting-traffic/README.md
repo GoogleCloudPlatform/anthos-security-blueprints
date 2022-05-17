@@ -97,6 +97,7 @@ Apply your [network policy](https://cloud.google.com/anthos-config-management/do
 
    ```
    git add namespaces/
+   git add cluster/
    git commit -m "add no internet network policy and constraint"
    git push
    nomos status --poll 2s
