@@ -1,8 +1,0 @@
-kind: ClusterSelector
-apiVersion: configmanagement.gke.io/v1
-metadata:
-  name: ${CLUSTER_NAME}-selector
-spec:
-  selector:
-    matchLabels:
-      cluster-name: ${CLUSTER_NAME}
